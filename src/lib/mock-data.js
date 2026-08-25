@@ -1,0 +1,501 @@
+import biryani from "@/assets/recipe-biryani.jpg";
+import pizza from "@/assets/recipe-pizza.jpg";
+import pasta from "@/assets/recipe-pasta.jpg";
+import pancakes from "@/assets/recipe-pancakes.jpg";
+import friedRice from "@/assets/recipe-friedrice.jpg";
+import sushi from "@/assets/recipe-sushi.jpg";
+import tacos from "@/assets/recipe-tacos.jpg";
+import heroTable from "@/assets/hero-table.jpg";
+
+export const images = {
+  biryani,
+  pizza,
+  pasta,
+  pancakes,
+  friedRice,
+  sushi,
+  tacos,
+  heroTable,
+};
+
+export const users = [
+  {
+    id: "u1",
+    name: "Sarah Khan",
+    username: "sarahkitchen",
+    bio: "Home cook in Lahore 🍳 Teaching beginners one dish at a time.",
+    emoji: "👩‍🍳",
+    followers: 12400,
+    following: 312,
+    posts: 68,
+    recipes: 24,
+  },
+  {
+    id: "u2",
+    name: "Ahmed Raza",
+    username: "ahmedcooks",
+    bio: "Desi flavours, simple steps. Biryani is a personality trait.",
+    emoji: "👨‍🍳",
+    followers: 8600,
+    following: 190,
+    posts: 41,
+    recipes: 17,
+  },
+  {
+    id: "u3",
+    name: "Mina Aoki",
+    username: "minabowls",
+    bio: "Japanese comfort food + tidy kitchens.",
+    emoji: "🍱",
+    followers: 5300,
+    following: 240,
+    posts: 52,
+    recipes: 21,
+  },
+  {
+    id: "u4",
+    name: "Luca Bianchi",
+    username: "lucapasta",
+    bio: "Nonna approved pasta only.",
+    emoji: "🍝",
+    followers: 9800,
+    following: 120,
+    posts: 77,
+    recipes: 33,
+  },
+  {
+    id: "u5",
+    name: "Zara Ali",
+    username: "zarabakes",
+    bio: "Cakes, cookies and chaos.",
+    emoji: "🎂",
+    followers: 4200,
+    following: 410,
+    posts: 90,
+    recipes: 12,
+  },
+];
+
+export const cuisines = [
+  { name: "Pakistani", flag: "🇵🇰", recipes: 148, image: biryani, slug: "pakistani" },
+  { name: "Indian", flag: "🇮🇳", recipes: 132, image: biryani, slug: "indian" },
+  { name: "Italian", flag: "🇮🇹", recipes: 176, image: pizza, slug: "italian" },
+  { name: "Chinese", flag: "🇨🇳", recipes: 121, image: friedRice, slug: "chinese" },
+  { name: "Japanese", flag: "🇯🇵", recipes: 98, image: sushi, slug: "japanese" },
+  { name: "Korean", flag: "🇰🇷", recipes: 74, image: friedRice, slug: "korean" },
+  { name: "Mexican", flag: "🇲🇽", recipes: 89, image: tacos, slug: "mexican" },
+  { name: "Thai", flag: "🇹🇭", recipes: 66, image: friedRice, slug: "thai" },
+  { name: "Turkish", flag: "🇹🇷", recipes: 58, image: heroTable, slug: "turkish" },
+  { name: "Mediterranean", flag: "🫒", recipes: 63, image: pasta, slug: "mediterranean" },
+];
+
+const base = {
+  ingredients: [
+    "2 cups basmati rice, rinsed",
+    "500 g chicken, cut into pieces",
+    "2 onions, thinly sliced",
+    "1 cup plain yogurt",
+    "2 tomatoes, chopped",
+    "2 tbsp biryani masala",
+    "1/2 cup cooking oil",
+    "Fresh coriander and mint",
+    "Salt to taste",
+  ],
+  steps: [
+    "Soak the rinsed rice in water for 30 minutes, then drain.",
+    "Fry the sliced onions in oil until golden brown, then set half aside for garnish.",
+    "Add chicken, yogurt, tomatoes and masala  Cook until the oil separates.",
+    "Boil the rice in salted water until 70% done and drain.",
+    "Layer the rice over the chicken, scatter herbs and fried onions.",
+    "Cover and steam on low heat for 15 minutes, then fluff gently and serve.",
+  ],
+  tip: "Keep the heat medium while cooking the onions to avoid burning them.",
+};
+
+function makeRecipe(partial) {
+  return {
+    rating: 4.7,
+    description:
+      "a friendly, step-by-step recipe written for people who are still learning their way around the kitchen.",
+    ...base,
+    ...partial,
+  };
+}
+
+export const recipes = [
+  makeRecipe({
+    id: "r1",
+    slug: "chicken-biryani",
+    title: "Chicken Biryani",
+    image: biryani,
+    creator: users[0],
+    cuisine: "Pakistani",
+    flag: "🇵🇰",
+    minutes: 60,
+    difficulty: "Medium",
+    likes: 1284,
+    rating: 4.8,
+    category: "Dinner",
+    description: "The weekend classic: fragrant layered rice, tender chicken and crisp fried onions.",
+  }),
+  makeRecipe({
+    id: "r2",
+    slug: "homemade-margherita-pizza",
+    title: "Homemade Margherita Pizza",
+    image: pizza,
+    creator: users[3],
+    cuisine: "Italian",
+    flag: "🇮🇹",
+    minutes: 45,
+    difficulty: "Easy",
+    likes: 964,
+    rating: 4.9,
+    category: "Dinner",
+    beginner: true,
+    ingredients: [
+      "300 g pizzadough",
+      "1/2 cup tomato passata",
+      "150 g mozzarella  torn",
+      "Fresh basil leaves",
+      "1 tbsp olive oil",
+      "Salt and oregano",
+    ],
+    steps: [
+      "Heat the oven as high as it goes and place a tray inside.",
+      "Stretch the dough by hand into a round base on baking paper.",
+      "Spread the passata thinly, leaving a border for the crust.",
+      "Add mozzarella  a drizzle of oil and a pinch of salt.",
+      "Bake 8-10 minutes until the crust is blistered.",
+      "Finish with fresh basil and serve immediately.",
+    ],
+    tip: "Do not overload the base — too many toppings make the middle soggy.",
+  }),
+  makeRecipe({
+    id: "r3",
+    slug: "creamy-garlic-pasta",
+    title: "Creamy Garlic Pasta",
+    image: pasta,
+    creator: users[3],
+    cuisine: "Italian",
+    flag: "🇮🇹",
+    minutes: 20,
+    difficulty: "Easy",
+    likes: 742,
+    category: "Lunch",
+    beginner: true,
+    ingredients: [
+      "200 g spaghetti",
+      "3 cloves garlic, sliced",
+      "3 tbsp butter",
+      "1/2 cup cream",
+      "Parmesan, grated",
+      "Parsley, chopped",
+    ],
+    steps: [
+      "Boil the pastain well-salted water until just tender.",
+      "Melt butter in a pan and soften the garlic gently — do not brown it.",
+      "Pour in the cream and a splash of pastawater.",
+      "Toss the drained pastain the sauce.",
+      "Add parmesan off the heat and stir until glossy.",
+      "Top with parsley and black pepper.",
+    ],
+    tip: "Save a cup of pastawater — it is the easiest way to loosen a thick sauce.",
+  }),
+  makeRecipe({
+    id: "r4",
+    slug: "fluffy-pancakes",
+    title: "Fluffy Breakfast Pancakes",
+    image: pancakes,
+    creator: users[4],
+    cuisine: "American",
+    flag: "🥞",
+    minutes: 20,
+    difficulty: "Easy",
+    likes: 1102,
+    category: "Breakfast",
+    beginner: true,
+    ingredients: [
+      "1 1/2 cups flour",
+      "2 tbsp sugar",
+      "1 tbsp baking powder",
+      "1 1/4 cups milk",
+      "1 egg",
+      "2 tbsp melted butter",
+    ],
+    steps: [
+      "Whisk the dry ingredients in a bowl.",
+      "Beat the milk, egg and butter together separately.",
+      "Fold the wet into the dry — lumps are fine.",
+      "Rest the batter for 5 minutes.",
+      "Cook on a medium pan until bubbles appear, then flip.",
+      "Serve warm with syrup and fruit.",
+    ],
+    tip: "Do not over-mix the batter, or the pancakes turn rubbery instead of fluffy.",
+  }),
+  makeRecipe({
+    id: "r5",
+    slug: "egg-fried-rice",
+    title: "10-Minute Egg Fried Rice",
+    image: friedRice,
+    creator: users[2],
+    cuisine: "Chinese",
+    flag: "🇨🇳",
+    minutes: 15,
+    difficulty: "Easy",
+    likes: 858,
+    category: "Lunch",
+    beginner: true,
+    ingredients: [
+      "3 cups cold cooked rice",
+      "2 eggs, beaten",
+      "1/2 cup mixed vegetables",
+      "2 spring onions, sliced",
+      "2 tbsp soy sauce",
+      "1 tbsp oil",
+    ],
+    steps: [
+      "Heat the oil in a wide pan until shimmering.",
+      "Scramble the eggs quickly and move them to one side.",
+      "Add the vegetables and stir-fry for a minute.",
+      "Add the cold rice and break up any clumps.",
+      "Season with soy sauce and toss everything together.",
+      "Finish with spring onions.",
+    ],
+    tip: "Use day-old rice from the fridge — fresh rice steams instead of frying.",
+  }),
+  makeRecipe({
+    id: "r6",
+    slug: "sushi-rolls-at-home",
+    title: "Simple Sushi Rolls",
+    image: sushi,
+    creator: users[2],
+    cuisine: "Japanese",
+    flag: "🇯🇵",
+    minutes: 50,
+    difficulty: "Hard",
+    likes: 623,
+    category: "Dinner",
+  }),
+  makeRecipe({
+    id: "r7",
+    slug: "street-style-tacos",
+    title: "Street-Style Tacos",
+    image: tacos,
+    creator: users[1],
+    cuisine: "Mexican",
+    flag: "🇲🇽",
+    minutes: 35,
+    difficulty: "Medium",
+    likes: 917,
+    category: "Dinner",
+  }),
+  makeRecipe({
+    id: "r8",
+    slug: "simple-biryani-for-beginners",
+    title: "Simple Biryani for Beginners",
+    image: biryani,
+    creator: users[1],
+    cuisine: "Pakistani",
+    flag: "🇵🇰",
+    minutes: 40,
+    difficulty: "Easy",
+    likes: 1330,
+    category: "Dinner",
+    beginner: true,
+  }),
+];
+
+export const beginnerRecipes = [
+  { title: "Homemade Margherita Pizza", minutes: 30, image: pizza, slug: "homemade-margherita-pizza" },
+  { title: "Creamy Garlic Pasta", minutes: 20, image: pasta, slug: "creamy-garlic-pasta" },
+  { title: "Egg Fried Rice", minutes: 15, image: friedRice, slug: "egg-fried-rice" },
+  { title: "Fluffy Pancakes", minutes: 20, image: pancakes, slug: "fluffy-pancakes" },
+  { title: "Street-Style Tacos", minutes: 25, image: tacos, slug: "street-style-tacos" },
+  { title: "Simple Biryani", minutes: 40, image: biryani, slug: "simple-biryani-for-beginners" },
+  { title: "Sushi Rolls at Home", minutes: 45, image: sushi, slug: "sushi-rolls-at-home" },
+];
+
+export const comments = [
+  {
+    id: "c1",
+    user: users[1],
+    text: "This looks incredible! How long did you rest the dough?",
+    time: "2h",
+    likes: 12,
+    replies: [
+      {
+        id: "c1r1",
+        user: users[0],
+        text: "About an hour on the counter — it made a big difference 🙌",
+        time: "1h",
+        likes: 4,
+      },
+    ],
+  },
+  {
+    id: "c2",
+    user: users[4],
+    text: "Made this last night and my family finished the whole tray 😂",
+    time: "5h",
+    likes: 31,
+  },
+  {
+    id: "c3",
+    user: users[2],
+    text: "Saving this for the weekend. Thank you for the beginner tip!",
+    time: "1d",
+    likes: 8,
+  },
+];
+
+export const posts = [
+  {
+    id: "p1",
+    user: users[0],
+    kind: "Food Post",
+    text: "Made my first homemade pizzatoday 🍕 The crust actually worked!",
+    image: pizza,
+    likes: 245,
+    commentCount: 32,
+    time: "20m",
+  },
+  {
+    id: "p2",
+    user: users[1],
+    kind: "Recipe",
+    text: "New recipe up: Simple Biryani for Beginners. Only one pot, promise 🍚",
+    image: biryani,
+    likes: 512,
+    commentCount: 64,
+    time: "2h",
+    recipeSlug: "simple-biryani-for-beginners",
+  },
+  {
+    id: "p3",
+    user: users[3],
+    kind: "Cooking Tip",
+    text: "Tip of the day: salt your pastawater like the sea  It's the only chance the pastaitself gets seasoned.",
+    likes: 189,
+    commentCount: 21,
+    time: "5h",
+  },
+  {
+    id: "p4",
+    user: users[2],
+    kind: "Food Post",
+    text: "Sunday sushi practice. Rolling is getting easier 🍣",
+    image: sushi,
+    likes: 331,
+    commentCount: 27,
+    time: "8h",
+  },
+  {
+    id: "p5",
+    user: users[4],
+    kind: "Food Post",
+    text: "Pancake stack for a slow morning 🥞",
+    image: pancakes,
+    likes: 402,
+    commentCount: 40,
+    time: "1d",
+  },
+];
+
+export const notifications = [
+  { id: "n1", user: users[0], action: "liked your pizzapost", time: "5m", type: "like" },
+  { id: "n2", user: users[1], action: "started following you", time: "1h", type: "follow" },
+  {
+    id: "n3",
+    user: users[4],
+    action: 'commented: "This looks so good!"',
+    time: "3h",
+    type: "comment",
+  },
+  {
+    id: "n4",
+    user: users[2],
+    action: "saved your Egg Fried Rice recipe",
+    time: "1d",
+    type: "save",
+  },
+];
+
+export const categories = ["Breakfast", "Lunch", "Dinner", "Desserts", "Snacks", "Drinks"];
+export const difficulties = ["Easy", "Medium", "Hard"];
+
+/* ---------------- Admin mock data ---------------- */
+
+export const adminStats = [
+  { label: "Users", value: "12,480", change: "+8.2%" },
+  { label: "Recipes", value: "3,912", change: "+4.1%" },
+  { label: "Posts", value: "18,204", change: "+12.6%" },
+  { label: "Comments", value: "42,610", change: "+6.9%" },
+  { label: "Reports", value: "37", change: "-2.4%" },
+];
+
+export const adminChart = [
+  { month: "Jan", users: 320, recipes: 120, posts: 640, engagement: 42 },
+  { month: "Feb", users: 410, recipes: 165, posts: 720, engagement: 48 },
+  { month: "Mar", users: 380, recipes: 140, posts: 810, engagement: 51 },
+  { month: "Apr", users: 520, recipes: 210, posts: 940, engagement: 58 },
+  { month: "May", users: 610, recipes: 240, posts: 1080, engagement: 63 },
+  { month: "Jun", users: 720, recipes: 280, posts: 1240, engagement: 71 },
+];
+
+export const adminUsers = users.map((u, i) => ({
+  ...u,
+  email: `${u.username}@chulha.app`,
+  role: i === 0 ? "Admin" : i === 1 ? "Moderator" : "Member",
+  status: i === 3 ? "Suspended" : i === 4 ? "Pending" : "Active",
+}));
+
+export const adminReports = [
+  {
+    id: "rp1",
+    target: 'Post - "Buy followers cheap"',
+    type: "Post",
+    reason: "Spam",
+    reporter: users[0],
+    status: "Open",
+  },
+  {
+    id: "rp2",
+    target: 'Comment - "this is garbage"',
+    type: "Comment",
+    reason: "Harassment",
+    reporter: users[2],
+    status: "Open",
+  },
+  {
+    id: "rp3",
+    target: "User - @fakechef",
+    type: "User",
+    reason: "Impersonation",
+    reporter: users[1],
+    status: "Reviewing",
+  },
+  {
+    id: "rp4",
+    target: 'Recipe - "Dangerous weight loss tea"',
+    type: "Recipe",
+    reason: "Harmful content",
+    reporter: users[3],
+    status: "Open",
+  },
+  {
+    id: "rp5",
+    target: 'Comment - "You have no idea how to cook"',
+    type: "Comment",
+    reason: "Hate speech",
+    reporter: users[0],
+    status: "Dismissed",
+  },
+  {
+    id: "rp6",
+    target: "User - @spam_bot_99",
+    type: "User",
+    reason: "Bot account",
+    reporter: users[4],
+    status: "Resolved",
+  },
+];

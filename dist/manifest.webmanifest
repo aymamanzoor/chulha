@@ -1,0 +1,16 @@
+{
+  "name": "Chulha — Food & Recipe Community",
+  "short_name": "Chulha",
+  "description": "A friendly cooking community for beginners and food lovers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e05a2b",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
