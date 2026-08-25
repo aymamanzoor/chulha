@@ -110,16 +110,17 @@ const startServer = async () => {
     if (connected) {
       // Sync models without dropping tables in normal runs
       await sequelize.sync({ alter: false });
-      console.log("🗄️  Sequelize models synchronized with PostgreSQL.");
+      console.log("🚀 Sequelize models synchronized with PostgreSQL.");
     }
 
-    app.listen(PORT, () => {
-      console.log(`🚀 Chulha Backend Server running on http://localhost:${PORT}`);
-      console.log(`📡 API Endpoints available at http://localhost:${PORT}/api/`);
-    });
+    if (!process.env.VERCEL) {
+      app.listen(PORT, () => {
+        console.log(`🔥 Chulha Backend Server running on http://localhost:${PORT}`);
+        console.log(`🌟 API Endpoints available at http://localhost:${PORT}/api/`);
+      });
+    }
   } catch (error) {
     console.error("❌ Failed to start server:", error);
-    process.exit(1);
   }
 };
 
