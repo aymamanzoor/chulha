@@ -77,21 +77,21 @@ export function AppShell({ children, rightSidebar }) {
         {/* Desktop sidebar */}
         <aside className="sticky top-4 hidden h-fit w-56 shrink-0 flex-col gap-2 pb-2 lg:flex">
           <Brand className="scale-90 origin-left -ml-1" />
-          <nav className="flex flex-col gap-0">
+          <nav className="flex flex-col gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.to}
                 {...(item.params ? { params: item.params } : {})}
-                className="flex items-center justify-between rounded-full px-3 py-1 text-[13px] font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                className="flex items-center justify-between rounded-full px-4 py-2 text-[14px] font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer"
                 activeProps={{ className: "bg-accent text-accent-foreground font-semibold" }}
               >
-                <div className="flex items-center gap-2">
-                  <item.icon className="size-[14px]" />
+                <div className="flex items-center gap-3">
+                  <item.icon className="size-[16px]" />
                   {item.label}
                 </div>
                 {item.badge && (
-                  <span className="grid size-4 place-items-center rounded-full bg-primary text-[9px] font-bold text-primary-foreground">
+                  <span className="grid size-[18px] place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
                     {item.badge}
                   </span>
                 )}
