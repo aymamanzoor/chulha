@@ -8,7 +8,7 @@ let sequelize;
 const fallbackDbUrl = "postgresql://neondb_owner:npg_MY1SptvGbT0m@ep-round-shadow-ayqkqpfy.c-5.us-east-2.aws.neon.tech/neondb?sslmode=require";
 
 if (process.env.DATABASE_URL || fallbackDbUrl) {
-  const connectionUrl = process.env.DATABASE_URL || fallbackDbUrl;
+  const connectionUrl = fallbackDbUrl;
   const isNeon = connectionUrl.includes("neon.tech");
   
   sequelize = new Sequelize(connectionUrl, {
