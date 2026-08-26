@@ -8,8 +8,12 @@ const __dirname = path.dirname(__filename);
 
 const uploadDir = path.resolve(__dirname, "../uploads");
 
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+try {
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  }
+} catch (err) {
+  console.warn("Could not create uploads directory in middleware:", err.message);
 }
 
 const storage = multer.diskStorage({

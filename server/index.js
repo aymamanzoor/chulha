@@ -29,10 +29,14 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Ensure uploads folder exists
+// Ensure uploads folder exists (Skip if on read-only serverless like Vercel)
 const uploadsDir = path.resolve(__dirname, "uploads");
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir, { recursive: true });
+try {
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }
+} catch (err) {
+  console.warn("Could not create uploads directory (likely read-only filesystem):", err.message);
 }
 
 // Middleware
