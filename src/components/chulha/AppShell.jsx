@@ -75,36 +75,36 @@ export function AppShell({ children, rightSidebar }) {
 
       <div className="mx-auto flex w-full max-w-7xl gap-6 px-4 pb-24 lg:px-6 lg:pb-10">
         {/* Desktop sidebar */}
-        <aside className="sticky top-6 hidden self-start h-fit w-60 shrink-0 flex-col gap-4 lg:flex">
+        <aside className="sticky top-4 hidden h-[calc(100vh-2rem)] w-60 shrink-0 flex-col gap-3 overflow-y-auto pb-4 scrollbar-hide lg:flex">
           <Brand />
-          <nav className="flex flex-col gap-1">
+          <nav className="flex flex-col gap-0.5">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.to}
                 {...(item.params ? { params: item.params } : {})}
-                className="flex items-center justify-between rounded-full px-4 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                className="flex items-center justify-between rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer"
                 activeProps={{ className: "bg-accent text-accent-foreground font-semibold" }}
               >
                 <div className="flex items-center gap-3">
-                  <item.icon className="size-[18px]" />
+                  <item.icon className="size-[16px]" />
                   {item.label}
                 </div>
                 {item.badge && (
-                  <span className="grid size-5 place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+                  <span className="grid size-[18px] place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
                     {item.badge}
                   </span>
                 )}
               </Link>
             ))}
           </nav>
-          <Button asChild variant="hero" size="default" className="w-full shrink-0">
+          <Button asChild variant="hero" size="sm" className="w-full shrink-0">
             <Link to="/create">
               <PlusCircle className="mr-2 size-4" /> Create
             </Link>
           </Button>
 
-          <div className="mt-4 space-y-1 pt-3 border-t border-border">
+          <div className="mt-2 space-y-0.5 pt-2 border-t border-border">
             {user ? (
               <div className="flex items-center justify-between gap-2 px-2 py-1">
                 <Link
@@ -112,7 +112,7 @@ export function AppShell({ children, rightSidebar }) {
                   params={{ username: user.username }}
                   className="flex items-center gap-2 min-w-0 flex-1 hover:opacity-80"
                 >
-                  <span className="grid size-8 shrink-0 place-items-center rounded-full bg-secondary text-sm">
+                  <span className="grid size-7 shrink-0 place-items-center rounded-full bg-secondary text-xs">
                     {user.emoji || "👩‍🍳"}
                   </span>
                   <span className="truncate text-xs font-semibold">{user.name}</span>
@@ -130,27 +130,27 @@ export function AppShell({ children, rightSidebar }) {
                 </button>
               </div>
             ) : (
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-0.5">
                 <Link
                   to="/login"
-                  className="flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+                  className="flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
                 >
-                  <UserIcon className="size-4" /> Log in
+                  <UserIcon className="size-[14px]" /> Log in
                 </Link>
                 <Link
                   to="/register"
-                  className="flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium text-primary hover:bg-primary/10"
+                  className="flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-primary hover:bg-primary/10"
                 >
-                  <Sparkles className="size-4" /> Join free
+                  <Sparkles className="size-[14px]" /> Join free
                 </Link>
               </div>
             )}
 
             <Link
               to="/admin"
-              className="flex items-center gap-2 rounded-full px-4 py-2 text-xs text-muted-foreground hover:text-foreground hover:bg-accent"
+              className="flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-muted-foreground hover:text-foreground hover:bg-accent"
             >
-              <Shield className="size-4" /> Admin portal
+              <Shield className="size-[14px]" /> Admin portal
             </Link>
           </div>
         </aside>
