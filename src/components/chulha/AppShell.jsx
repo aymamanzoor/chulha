@@ -75,47 +75,47 @@ export function AppShell({ children, rightSidebar }) {
 
       <div className="mx-auto flex w-full max-w-7xl gap-6 px-4 pb-24 lg:px-6 lg:pb-10">
         {/* Desktop sidebar */}
-        <aside className="sticky top-4 hidden h-[calc(100vh-2rem)] w-60 shrink-0 flex-col gap-3 overflow-y-auto pb-4 scrollbar-hide lg:flex">
-          <Brand />
-          <nav className="flex flex-col gap-0.5">
+        <aside className="sticky top-2 hidden h-[calc(100vh-1rem)] w-56 shrink-0 flex-col gap-2 overflow-hidden pb-2 lg:flex">
+          <Brand className="scale-90 origin-left -ml-1" />
+          <nav className="flex flex-col gap-0">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.to}
                 {...(item.params ? { params: item.params } : {})}
-                className="flex items-center justify-between rounded-full px-4 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer"
+                className="flex items-center justify-between rounded-full px-3 py-1 text-[13px] font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground cursor-pointer"
                 activeProps={{ className: "bg-accent text-accent-foreground font-semibold" }}
               >
-                <div className="flex items-center gap-3">
-                  <item.icon className="size-[16px]" />
+                <div className="flex items-center gap-2">
+                  <item.icon className="size-[14px]" />
                   {item.label}
                 </div>
                 {item.badge && (
-                  <span className="grid size-[18px] place-items-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
+                  <span className="grid size-4 place-items-center rounded-full bg-primary text-[9px] font-bold text-primary-foreground">
                     {item.badge}
                   </span>
                 )}
               </Link>
             ))}
           </nav>
-          <Button asChild variant="hero" size="sm" className="w-full shrink-0">
+          <Button asChild variant="hero" size="sm" className="w-full shrink-0 h-8 text-[13px]">
             <Link to="/create">
-              <PlusCircle className="mr-2 size-4" /> Create
+              <PlusCircle className="mr-1.5 size-3.5" /> Create
             </Link>
           </Button>
 
-          <div className="mt-2 space-y-0.5 pt-2 border-t border-border">
+          <div className="mt-1 space-y-0 pt-1 border-t border-border">
             {user ? (
-              <div className="flex items-center justify-between gap-2 px-2 py-1">
+              <div className="flex items-center justify-between gap-1 px-2 py-0.5">
                 <Link
                   to="/profile/$username"
                   params={{ username: user.username }}
-                  className="flex items-center gap-2 min-w-0 flex-1 hover:opacity-80"
+                  className="flex items-center gap-1.5 min-w-0 flex-1 hover:opacity-80"
                 >
-                  <span className="grid size-7 shrink-0 place-items-center rounded-full bg-secondary text-xs">
+                  <span className="grid size-6 shrink-0 place-items-center rounded-full bg-secondary text-[10px]">
                     {user.emoji || "👩‍🍳"}
                   </span>
-                  <span className="truncate text-xs font-semibold">{user.name}</span>
+                  <span className="truncate text-[11px] font-semibold">{user.name}</span>
                 </Link>
                 <button
                   type="button"
@@ -124,33 +124,33 @@ export function AppShell({ children, rightSidebar }) {
                     toast("Logged out");
                   }}
                   title="Log out"
-                  className="rounded-full p-1.5 text-muted-foreground hover:bg-accent hover:text-destructive cursor-pointer"
+                  className="rounded-full p-1 text-muted-foreground hover:bg-accent hover:text-destructive cursor-pointer"
                 >
-                  <LogOut className="size-3.5" />
+                  <LogOut className="size-3" />
                 </button>
               </div>
             ) : (
-              <div className="flex flex-col gap-0.5">
+              <div className="flex flex-col gap-0">
                 <Link
                   to="/login"
-                  className="flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
+                  className="flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-medium text-muted-foreground hover:text-foreground hover:bg-accent"
                 >
-                  <UserIcon className="size-[14px]" /> Log in
+                  <UserIcon className="size-[12px]" /> Log in
                 </Link>
                 <Link
                   to="/register"
-                  className="flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-primary hover:bg-primary/10"
+                  className="flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-medium text-primary hover:bg-primary/10"
                 >
-                  <Sparkles className="size-[14px]" /> Join free
+                  <Sparkles className="size-[12px]" /> Join free
                 </Link>
               </div>
             )}
 
             <Link
               to="/admin"
-              className="flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-muted-foreground hover:text-foreground hover:bg-accent"
+              className="flex items-center gap-2 rounded-full px-3 py-1 text-[11px] text-muted-foreground hover:text-foreground hover:bg-accent"
             >
-              <Shield className="size-[14px]" /> Admin portal
+              <Shield className="size-[12px]" /> Admin portal
             </Link>
           </div>
         </aside>
