@@ -8,15 +8,18 @@ let sequelize;
 const fallbackDbUrl = "postgresql://neondb_owner:npg_MY1SptvGbT0m@ep-round-shadow-ayqkqpfy.c-5.us-east-2.aws.neon.tech/neondb?sslmode=require";
 
 if (process.env.DATABASE_URL || fallbackDbUrl) {
-  sequelize = new Sequelize(process.env.DATABASE_URL || fallbackDbUrl, {
+  const connectionUrl = process.env.DATABASE_URL || fallbackDbUrl;
+  const isNeon = connectionUrl.includes("neon.tech");
+  
+  sequelize = new Sequelize(connectionUrl, {
     dialect: "postgres",
     logging: process.env.NODE_ENV === "development" ? (msg) => console.log(`[SQL]: ${msg}`) : false,
-    dialectOptions: {
+    dialectOptions: (isNeon || process.env.DATABASE_SSL === "true") ? {
       ssl: {
         require: true,
         rejectUnauthorized: false,
       },
-    },
+    } : {},
     pool: {
       max: 10,
       min: 0,
