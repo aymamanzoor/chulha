@@ -5,16 +5,18 @@ dotenv.config();
 
 let sequelize;
 
-if (process.env.DATABASE_URL) {
-  sequelize = new Sequelize(process.env.DATABASE_URL, {
+const fallbackDbUrl = "postgresql://neondb_owner:npg_MY1SptvGbT0m@ep-round-shadow-ayqkqpfy.c-5.us-east-2.aws.neon.tech/neondb?sslmode=require";
+
+if (process.env.DATABASE_URL || fallbackDbUrl) {
+  sequelize = new Sequelize(process.env.DATABASE_URL || fallbackDbUrl, {
     dialect: "postgres",
     logging: process.env.NODE_ENV === "development" ? (msg) => console.log(`[SQL]: ${msg}`) : false,
-    dialectOptions: process.env.DATABASE_SSL === "true" ? {
+    dialectOptions: {
       ssl: {
         require: true,
         rejectUnauthorized: false,
       },
-    } : {},
+    },
     pool: {
       max: 10,
       min: 0,
