@@ -3,10 +3,8 @@ import path from "path";
 import fs from "fs";
 import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const uploadDir = path.resolve(__dirname, "../uploads");
+const _dirname = path.resolve(process.cwd(), "server", "middleware");
+const uploadDir = path.resolve(_dirname, "../uploads");
 
 try {
   if (!fs.existsSync(uploadDir)) {

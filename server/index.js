@@ -23,14 +23,13 @@ import notificationsRoutes from "./routes/notifications.routes.js";
 import adminRoutes from "./routes/admin.routes.js";
 import uploadRoutes from "./routes/upload.routes.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const _dirname = path.resolve(process.cwd(), "server");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Ensure uploads folder exists (Skip if on read-only serverless like Vercel)
-const uploadsDir = path.resolve(__dirname, "uploads");
+const uploadsDir = path.resolve(_dirname, "uploads");
 try {
   if (!fs.existsSync(uploadsDir)) {
     fs.mkdirSync(uploadsDir, { recursive: true });
@@ -92,7 +91,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/upload", uploadRoutes);
 
 // Serve static React files in production
-const distPath = path.resolve(__dirname, "..", "dist");
+const distPath = path.resolve(_dirname, "..", "dist");
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
   // Client-side routing fallback
