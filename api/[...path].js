@@ -1,2 +1,1 @@
-import app from ../server/index.js;
-export default app;
+export default function handler(req, res) { res.status(200).json({ message: Hello from test }); }
