@@ -75,7 +75,7 @@ export function AppShell({ children, rightSidebar }) {
 
       <div className="mx-auto flex w-full max-w-7xl gap-6 px-4 pb-24 lg:px-6 lg:pb-10">
         {/* Desktop sidebar */}
-        <aside className="sticky top-2 hidden h-[calc(100vh-1rem)] w-56 shrink-0 flex-col gap-2 overflow-hidden pb-2 lg:flex">
+        <aside className="sticky top-4 hidden h-fit w-56 shrink-0 flex-col gap-2 pb-2 lg:flex">
           <Brand className="scale-90 origin-left -ml-1" />
           <nav className="flex flex-col gap-0">
             {navItems.map((item) => (
