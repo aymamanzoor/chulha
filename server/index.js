@@ -112,9 +112,13 @@ const startServer = async () => {
   try {
     const connected = await testConnection();
     if (connected) {
-      // Sync models without dropping tables in normal runs
-      await sequelize.sync({ alter: false });
-      console.log("🚀 Sequelize models synchronized with PostgreSQL.");
+      if (!process.env.VERCEL) {
+        // Sync models without dropping tables in normal runs
+        await sequelize.sync({ alter: false });
+        console.log("🚀 Sequelize models synchronized with PostgreSQL.");
+      } else {
+        console.log("Vercel environment detected. Skipping sequelize.sync() to save cold-start time.");
+      }
     }
 
     if (!process.env.VERCEL) {
